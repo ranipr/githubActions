@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gschdhistapp
+spec:
+  #schedule: "0 0 22 * *"
+  schedule: "0 0 2 * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: gschdhistcntr
+            image: deveus2mwiotpgaacr.azurecr.io/pgagivehistsch:#{Build.BuildNumber}#
+            imagePullPolicy: Always
+            args: 
+              - --SqlServerConstr #{mwna-sqlserver-connstr}#
+              - --SPName #{mwna-historian-sp}#
+            ports:
+            - containerPort: 5048
+              name: gschdhistcntr
+          imagePullSecrets:
+            - name: regcred
+          restartPolicy: OnFailure

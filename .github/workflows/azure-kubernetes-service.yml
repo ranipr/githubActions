@@ -39,7 +39,7 @@ env:
   CONTAINER_NAME: "githubimg"
   RESOURCE_GROUP: "COE-DF-CORE-EUS2-DEV-RG"
   CLUSTER_NAME: "Coe-df-aks-02-d"
-  DEPLOYMENT_MANIFEST_PATH: "githubactions/GiveawayHistorianScheduler/Deployment.yaml"
+  DEPLOYMENT_MANIFEST_PATH: "GiveawayHistorianScheduler/Deployment.yaml"
 
 jobs:
   buildImage:
